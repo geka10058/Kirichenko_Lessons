@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:columnCount="3"
+    android:rowCount="5"
+    tools:context=".GridActivity">
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/argentina" />
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:src="@drawable/france" />
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:src="@drawable/germany" />
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/india" />
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:src="@drawable/mexico" />
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:src="@drawable/south_korea" />
+
+    <ImageView
+        android:id="@+id/iv_first_activity"
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/spain" />
+
+    <ImageView
+        android:id="@+id/iv_second_activity"
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:src="@drawable/united_kingdom" />
+
+    <ImageView
+        android:id="@+id/iv_third_activity"
+        android:layout_width="125dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:src="@drawable/united_states" />
+
+</GridLayout>
