@@ -4,28 +4,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.kirichenko_lessons.databinding.ActivityMainBinding
+import com.example.kirichenko_lessons.databinding.ActivityGridBinding
 
-class MainActivity : AppCompatActivity() {
+class GridActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityGridBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityGridBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.apply {
 
-            Toast.makeText(applicationContext,R.string.frame_layout,Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,R.string.grid_layout, Toast.LENGTH_SHORT).show()
 
-            ivSecondActivity.setOnClickListener {
-                val intent = Intent(this@MainActivity, LinearActivity::class.java)
+            ivFirstActivity.setOnClickListener {
+                val intent = Intent(this@GridActivity, MainActivity::class.java)
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             }
 
-            ivThirdActivity.setOnClickListener {
-                val intent = Intent(this@MainActivity, GridActivity::class.java)
+            ivSecondActivity.setOnClickListener {
+                val intent = Intent(this@GridActivity, LinearActivity::class.java)
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             }
