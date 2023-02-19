@@ -13,6 +13,6 @@
     <color name="dark_background_color">#E8E6E5</color>
     <color name="text_color">#0E0E0E</color>
     <color name="second_hands_color">#D52A2A</color>
-    <color name="minute_hands_color">#002F47</color>
+    <color name="minute_hour_hands_color">#002F47</color>
     <color name="border_color">#23FFFFFF</color>
 </resources>

@@ -25,14 +25,20 @@ class ClockView(
     private val darkShadowColor = ContextCompat.getColor(context, R.color.dark_shadow_color)
     private val lightShadowColor = ContextCompat.getColor(context, R.color.light_shadow_color)
     private val darkBackgroundColor = ContextCompat.getColor(context, R.color.dark_background_color)
-    private val lightBackgroundColor = ContextCompat.getColor(context, R.color.light_background_color)
+    private val lightBackgroundColor =
+        ContextCompat.getColor(context, R.color.light_background_color)
     private val borderColor = ContextCompat.getColor(context, R.color.border_color)
     private val textColor = ContextCompat.getColor(context, R.color.text_color)
-    private val hourHandsColor = ContextCompat.getColor(context, R.color.hour_hands_color)
-    private val secondHandsColor = ContextCompat.getColor(context, R.color.second_hands_color)
-    private val minuteHandsColor = ContextCompat.getColor(context, R.color.minute_hands_color)
-    private val textFontSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14f, context.resources.displayMetrics)
-    private val defaultMargin =TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, context.resources.displayMetrics)
+    private var hourHandsColor = ContextCompat.getColor(context, R.color.hour_hands_color)
+    private var secondHandsColor = ContextCompat.getColor(context, R.color.second_hands_color)
+    private var minuteHandsColor = ContextCompat.getColor(context, R.color.minute_hour_hands_color)
+    private val textFontSize =
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14f, context.resources.displayMetrics)
+    private val defaultMargin =
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, context.resources.displayMetrics)
+    private var hourHandsSize = 0
+    private var minuteHandsSize = 0
+    private var secondHandsSize = 0
 
     private var mHeight: Int = 0
     private var mWidth: Int = 0
@@ -47,11 +53,37 @@ class ClockView(
     private var mCentreY: Float = 0F
     private var mMinimum: Int = 0
     private var mHour = 0
-    private var mMinute = 0F
-    private var mSecond = 0F
     private lateinit var mPath: Path
     private lateinit var mRect: Rect
     private lateinit var mNumbers: Array<Int>
+
+    init {
+        context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.ClockView,
+            0, 0
+        ).apply {
+            try {
+                hourHandsColor = getColor(
+                    R.styleable.ClockView_hourHandsColor,
+                    ContextCompat.getColor(context, R.color.hour_hands_color)
+                )
+                minuteHandsColor = getColor(
+                    R.styleable.ClockView_minuteHandsColor,
+                    ContextCompat.getColor(context, R.color.hour_hands_color)
+                )
+                secondHandsColor = getColor(
+                    R.styleable.ClockView_secondHandsColor,
+                    ContextCompat.getColor(context, R.color.second_hands_color)
+                )
+                hourHandsSize = getDimensionPixelSize(R.styleable.ClockView_hourHandsSize, 50)
+                minuteHandsSize = getDimensionPixelSize(R.styleable.ClockView_minuteHandsSize, 100)
+                secondHandsSize = getDimensionPixelSize(R.styleable.ClockView_secondHandsSize, 120)
+            } finally {
+                recycle()
+            }
+        }
+    }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -135,15 +167,18 @@ class ClockView(
 
         when (handType) {
             HandType.HOUR -> {
-                handRadius = mRadius - mRadius / 2
+                //handRadius = mRadius - mRadius / 2
+                handRadius = hourHandsSize
                 setPaintAttributes(hourHandsColor, Paint.Style.STROKE, 12F)
             }
             HandType.MINUTE -> {
-                handRadius = mRadius - mRadius / 4
+                //handRadius = mRadius - mRadius / 4
+                handRadius = minuteHandsSize
                 setPaintAttributes(minuteHandsColor, Paint.Style.STROKE, 6F)
             }
             HandType.SECOND -> {
-                handRadius = mRadius - mRadius / 9
+                //handRadius = mRadius - mRadius / 9
+                handRadius = secondHandsSize
                 setPaintAttributes(secondHandsColor, Paint.Style.STROKE, 6F)
             }
         }
