@@ -29,13 +29,13 @@ class ClockView(
         ContextCompat.getColor(context, R.color.light_background_color)
     private val borderColor = ContextCompat.getColor(context, R.color.border_color)
     private val textColor = ContextCompat.getColor(context, R.color.text_color)
-    private var hourHandsColor = ContextCompat.getColor(context, R.color.hour_hands_color)
-    private var secondHandsColor = ContextCompat.getColor(context, R.color.second_hands_color)
-    private var minuteHandsColor = ContextCompat.getColor(context, R.color.minute_hour_hands_color)
     private val textFontSize =
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14f, context.resources.displayMetrics)
     private val defaultMargin =
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, context.resources.displayMetrics)
+    private var hourHandsColor = 0
+    private var secondHandsColor = 0
+    private var minuteHandsColor = 0
     private var hourHandsSize = 0
     private var minuteHandsSize = 0
     private var secondHandsSize = 0
