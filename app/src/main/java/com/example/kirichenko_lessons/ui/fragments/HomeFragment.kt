@@ -1,20 +1,30 @@
-package com.example.kirichenko_lessons
+package com.example.kirichenko_lessons.ui.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
-import com.example.kirichenko_lessons.databinding.ActivityMainBinding
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.kirichenko_lessons.R
+import com.example.kirichenko_lessons.databinding.FragmentHomeBinding
 
-class MainActivity : AppCompatActivity() {
+class HomeFragment: Fragment(R.layout.fragment_home) {
 
-private lateinit var binding: ActivityMainBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = requireNotNull(_binding)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
 

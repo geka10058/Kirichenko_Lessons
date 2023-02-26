@@ -5,6 +5,7 @@
     <string name="title_two">О нас:</string>
     <string name="description_two">Aston — компания по разработке ПО с полным циклом услуг. Уже 15 лет мы помогаем заказчикам по всему миру трансформировать бизнес, создавая эффективные мобильные и десктопные решения.</string>
     <string name="title_three">Офисы</string>
+    <string name="title_home">Главная</string>
     <string name="office_moscow">Москва</string>
     <string name="office_kazan">Казань</string>
     <string name="office_rostow">Ростов-на-Дону</string>
@@ -13,4 +14,14 @@
     <string name="contacts">Контакты</string>
     <string name="vacancy">Вакансии</string>
     <string name="gallery">Галерея</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="sign_in">Войти</string>
 </resources>
