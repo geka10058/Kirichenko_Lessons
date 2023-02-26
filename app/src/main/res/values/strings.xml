@@ -24,4 +24,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="sign_in">Войти</string>
+    <string name="vacancy_title">Vacancy Title Name BlaBlaBla</string>
+    <string name="vacancy_location">Vacancy Location</string>
 </resources>
