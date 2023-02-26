@@ -5,4 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.VacancyFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_vacancy"
+        android:layout_margin="16dp"
+        tools:listitem="@layout/item_vacancy"
+        tools:itemCount="10"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
