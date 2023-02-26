@@ -27,32 +27,6 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-
-            btnContacts.setOnClickListener {
-                hideGroupEndShowProgressBar()
-            }
-
-            btnGallery.setOnClickListener {
-                hideGroupEndShowProgressBar()
-            }
-
-            btnVacancy.setOnClickListener {
-                hideGroupEndShowProgressBar()
-            }
-
-            ivLogo.setOnClickListener {
-                showGroupEndHideProgressBar()
-            }
         }
-    }
-
-    private fun hideGroupEndShowProgressBar(){
-        binding.group.visibility = View.INVISIBLE
-        binding.progressBar.visibility = View.VISIBLE
-    }
-
-    private fun showGroupEndHideProgressBar(){
-        binding.group.visibility = View.VISIBLE
-        binding.progressBar.visibility = View.INVISIBLE
     }
 }

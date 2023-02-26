@@ -1,21 +1,56 @@
-package com.example.kirichenko_lessons.ui.activity.login_activity
+package com.example.kirichenko_lessons.ui.fragments
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
-import com.example.kirichenko_lessons.databinding.ActivityLoginBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
+import com.example.kirichenko_lessons.R
+import com.example.kirichenko_lessons.databinding.FragmentLoginBinding
 
-class LoginActivity : AppCompatActivity() {
+class LoginFragment : Fragment(R.layout.fragment_login) {
 
-    private lateinit var binding: ActivityLoginBinding
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = requireNotNull(_binding)
+    val mainFragment = MainFragment()
+    private val passwordCorrect = "password"
+    private var email = ""
+    private var password = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().setTitle(R.string.title_activity_login)
+
+        binding.apply {
+
+            btnGoogleSignIn.isEnabled = false
+
+            tvEmail.addTextChangedListener {
+                email = it.toString()
+            }
+
+            tvPassword.addTextChangedListener {
+                btnGoogleSignIn.isEnabled = checkPassword(it.toString())
+            }
+
+            btnGoogleSignIn.setOnClickListener {
+                requireActivity().supportFragmentManager
+                goToMainFragment()
+            }
+
+        }
 
         /*val username = binding.username
         val password = binding.password
@@ -88,25 +123,38 @@ class LoginActivity : AppCompatActivity() {
         }*/
     }
 
-   /* private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
+    /* private fun updateUiWithUser(model: LoggedInUserView) {
+         val welcome = getString(R.string.welcome)
+         val displayName = model.displayName
+         // TODO : initiate successful logged in experience
+         Toast.makeText(
+             applicationContext,
+             "$welcome $displayName",
+             Toast.LENGTH_LONG
+         ).show()
+     }
+
+     private fun showLoginFailed(@StringRes errorString: Int) {
+         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+     }*/
+
+    private fun checkPassword(password:String):Boolean{
+        return passwordCorrect == password
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
-    }*/
+    private fun goToMainFragment(){
+        /*val intent = Intent(this@LoginActivity, MainActivity()::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK + Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)*/
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.container_main, mainFragment)
+            .commit()
+    }
 }
 
-/**
- * Extension function to simplify setting an afterTextChanged action to EditText components.
- */
+/*
+Extension function to simplify setting an afterTextChanged action to EditText components.
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
         override fun afterTextChanged(editable: Editable?) {
@@ -117,4 +165,4 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
     })
-}
+}*/
