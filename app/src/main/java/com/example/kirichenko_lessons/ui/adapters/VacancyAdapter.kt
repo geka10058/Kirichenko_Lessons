@@ -3,6 +3,7 @@ package com.example.kirichenko_lessons.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kirichenko_lessons.R
 import com.example.kirichenko_lessons.data.model.Vacancy
 import com.example.kirichenko_lessons.databinding.ItemVacancyBinding
 
